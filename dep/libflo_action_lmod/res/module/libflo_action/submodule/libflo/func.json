@@ -1,0 +1,9 @@
+{
+    "lib": {
+        "platforms": [{ "os": "windows", "path": "libflo_action.dll" }],
+        "functions": [
+            { "symbol": "construct", "input": "any" },
+            { "symbol": "receive", "input": "string" }
+        ]
+    }
+}

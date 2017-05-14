@@ -1,0 +1,7 @@
+{
+    "events": [
+        { "name": "construct", "input": "any" },
+        { "name": "dispatch", "input": "any" },
+        { "name": "parse", "input": "any", "output": "any" }
+    ]
+}

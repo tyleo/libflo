@@ -1,0 +1,20 @@
+{
+    "handlers": [
+        {
+            "event": { "module": "libflo", "name": "construct" },
+            "function": { "module": "libflo_action_test_0", "name": "construct" }
+        },
+        {
+            "event": { "module": "libflo_action", "name": "construct" },
+            "function": { "module": "libflo_action_test_0", "name": "action_construct" }
+        },
+        {
+            "event": { "module": "libflo_action", "name": "dispatch" },
+            "function": { "module": "libflo_action_test_0", "name": "dispatch" }
+        },
+        {
+            "event": { "module": "libflo_action", "name": "parse" },
+            "function": { "module": "libflo_action_test_0", "name": "parse" }
+        }
+    ]
+}

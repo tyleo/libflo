@@ -1,0 +1,8 @@
+{
+    "handlers": [
+        {
+            "event": { "module": "libflo", "name": "construct" },
+            "function": { "module": "libflo", "name": "construct" }
+        }
+    ]
+}

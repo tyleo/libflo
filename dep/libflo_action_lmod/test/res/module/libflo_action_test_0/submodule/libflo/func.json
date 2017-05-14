@@ -1,0 +1,12 @@
+{
+    "lib": {
+        "platforms": [{ "os": "windows", "path": "libflo_action_test_0.dll" }],
+        "functions": [
+            { "symbol": "action_construct", "input": "any" },
+            { "symbol": "construct", "input": "any" },
+            { "symbol": "dispatch", "input": "any" },
+            { "symbol": "load" },
+            { "symbol": "parse", "input": "any", "output": "any" }
+        ]
+    }
+}

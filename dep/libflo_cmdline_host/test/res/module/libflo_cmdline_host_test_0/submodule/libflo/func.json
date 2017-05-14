@@ -1,0 +1,9 @@
+{
+    "lib": {
+        "platforms": [{ "os": "windows", "path": "libflo_cmdline_host_test_0.dll" }],
+        "functions": [
+            { "symbol": "construct", "input": "any" },
+            { "symbol": "hello_world" }
+        ]
+    }
+}

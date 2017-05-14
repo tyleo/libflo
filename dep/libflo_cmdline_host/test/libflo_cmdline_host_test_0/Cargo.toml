@@ -1,0 +1,21 @@
+[dependencies.libflo_error]
+path = "../../../libflo_error"
+version = "0.1"
+
+[lib]
+crate-type = ["dylib"]
+
+[package]
+authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
+description = "A test lib for libflo_host."
+exclude = [
+    ".gitignore",
+    "build.gradle",
+    "gradle",
+    "gradlew",
+    "gradlew.bat",
+    "README",
+]
+license = "MIT"
+name = "libflo_cmdline_host_test_0"
+version = "0.1.0"

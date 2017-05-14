@@ -1,0 +1,20 @@
+[dependencies]
+lazy_static = "0.2"
+mut_static = "5"
+number_or_string = "0.2"
+
+[dependencies.libflo_action]
+path = "../libflo_action"
+version = "0.1"
+
+[package]
+authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
+description = "Provides an easy way to include libflo action in a project."
+exclude = [
+    ".gitignore",
+    "README",
+    "test/**"
+]
+license = "MIT"
+name = "libflo_action_std"
+version = "0.1.0"

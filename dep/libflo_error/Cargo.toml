@@ -1,0 +1,15 @@
+[dependencies.error-chain]
+version = "0.10"
+default-features = false
+
+[package]
+authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
+description = "Allows libflo libs to return errors."
+exclude = [
+    ".gitignore",
+    "README",
+    "test/**"
+]
+license = "MIT"
+name = "libflo_error"
+version = "0.1.2"

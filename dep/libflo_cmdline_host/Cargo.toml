@@ -1,0 +1,19 @@
+[dependencies.error-chain]
+version = "0.10"
+default-features = false
+
+[dependencies.libflo_std]
+path = "../libflo_std"
+version = "0.1"
+
+[package]
+authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
+description = "Hosts libflo on the command line."
+exclude = [
+    ".gitignore",
+    "README",
+    "test/**"
+]
+license = "MIT"
+name = "libflo_cmdline_host"
+version = "0.1.2"

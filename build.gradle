@@ -1,0 +1,216 @@
+// funcs
+import java.nio.file.Files;
+
+def create_symlink = {
+    from, to ->
+        def to_file = file(to);
+        if (!to_file.exists()) {
+            def from_file = file(from);
+            Files.createSymbolicLink(to_file.toPath(), from_file.toPath());
+        }
+}
+
+// libflo
+task libflo_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo"
+}
+
+// libflo_lmod
+task libflo_lmod_cargo_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_lmod"
+}
+
+task libflo_lmod_symlink() {
+    doLast {
+        create_symlink(
+            "dep\\libflo_lmod\\target\\debug\\libflo_lmod.dll",
+            "dep\\libflo_lmod\\res\\module\\libflo\\submodule\\libflo\\libflo.dll"
+        )
+    }
+}
+
+task libflo_lmod_build(dependsOn: [libflo_lmod_cargo_build, libflo_lmod_symlink])
+
+libflo_lmod_symlink.mustRunAfter libflo_lmod_cargo_build
+
+// libflo_action
+task libflo_action_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_action"
+}
+
+// libflo_action_lmod
+task libflo_action_lmod_cargo_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_action_lmod"
+}
+
+task libflo_action_lmod_cargo_test(type: Exec) {
+    commandLine "cargo.exe", "test"
+    workingDir "dep/libflo_action_lmod"
+}
+
+task libflo_action_lmod_symlink() {
+    doLast {
+        create_symlink(
+            "dep\\libflo_action_lmod\\target\\debug\\libflo_action_lmod.dll",
+            "dep\\libflo_action_lmod\\res\\module\\libflo_action\\submodule\\libflo\\libflo_action.dll"
+        )
+    }
+}
+
+task libflo_action_lmod_libflo_action_test_0_cargo_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_action_lmod/test/libflo_action_test_0"
+}
+
+task libflo_action_lmod_libflo_action_test_0_symlink() {
+    doLast {
+        create_symlink(
+            "dep\\libflo_lmod\\res\\module\\libflo",
+            "dep\\libflo_action_lmod\\test\\res\\module\\libflo"
+        )
+
+        create_symlink(
+            "dep\\libflo_action_lmod\\res\\module\\libflo_action",
+            "dep\\libflo_action_lmod\\test\\res\\module\\libflo_action"
+        )
+
+        create_symlink(
+            "dep\\libflo_action_lmod\\test\\libflo_action_test_0\\target\\debug\\libflo_action_test_0.dll",
+            "dep\\libflo_action_lmod\\test\\res\\module\\libflo_action_test_0\\submodule\\libflo\\libflo_action_test_0.dll"
+        )
+    }
+}
+
+task libflo_action_lmod_build(dependsOn: [libflo_action_lmod_cargo_build, libflo_action_lmod_symlink])
+
+task libflo_action_lmod_libflo_action_test_0_build(dependsOn: [
+    libflo_action_lmod_libflo_action_test_0_cargo_build,
+    libflo_action_lmod_libflo_action_test_0_symlink
+])
+
+task libflo_action_lmod_test(dependsOn: [
+    libflo_action_lmod_build,
+    libflo_action_lmod_cargo_test,
+    libflo_action_lmod_libflo_action_test_0_build,
+    libflo_lmod_build
+])
+
+libflo_action_lmod_cargo_test.mustRunAfter libflo_action_lmod_build
+libflo_action_lmod_cargo_test.mustRunAfter libflo_action_lmod_libflo_action_test_0_build
+libflo_action_lmod_cargo_test.mustRunAfter libflo_lmod_build
+
+libflo_action_lmod_symlink.mustRunAfter libflo_action_lmod_cargo_build
+
+libflo_action_lmod_libflo_action_test_0_symlink.mustRunAfter libflo_action_lmod_libflo_action_test_0_cargo_build
+
+// libflo_action_std
+task libflo_action_std_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_action_std"
+}
+
+// libflo_cmdline_host
+task libflo_cmdline_host_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_cmdline_host"
+}
+
+task libflo_cmdline_host_cargo_test(type: Exec) {
+    commandLine "cargo.exe", "test"
+    workingDir "dep/libflo_cmdline_host"
+}
+
+task libflo_cmdline_host_libflo_cmdline_host_test_0_cargo_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_cmdline_host/test/libflo_cmdline_host_test_0"
+}
+
+task libflo_cmdline_host_libflo_cmdline_host_test_0_symlink() {
+    doLast {
+        create_symlink(
+            "dep\\libflo_cmdline_host\\test\\libflo_cmdline_host_test_0\\target\\debug\\libflo_cmdline_host_test_0.dll",
+            "dep\\libflo_cmdline_host\\test\\res\\module\\libflo_cmdline_host_test_0\\submodule\\libflo\\libflo_cmdline_host_test_0.dll"
+        )
+    }
+}
+
+task libflo_cmdline_host_libflo_cmdline_host_test_0_build(dependsOn: [
+    libflo_cmdline_host_libflo_cmdline_host_test_0_cargo_build,
+    libflo_cmdline_host_libflo_cmdline_host_test_0_symlink
+])
+
+task libflo_cmdline_host_test(dependsOn: [
+    libflo_cmdline_host_build,
+    libflo_cmdline_host_cargo_test,
+    libflo_cmdline_host_libflo_cmdline_host_test_0_build
+])
+
+libflo_cmdline_host_cargo_test.mustRunAfter libflo_cmdline_host_libflo_cmdline_host_test_0_build
+
+libflo_cmdline_host_libflo_cmdline_host_test_0_build.mustRunAfter libflo_cmdline_host_build
+
+// libflo_error
+task libflo_error_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_error"
+}
+
+// libflo_event
+task libflo_event_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_event"
+}
+
+// libflo_func
+task libflo_func_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_func"
+}
+
+// libflo_module
+task libflo_module_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_module"
+}
+
+task libflo_module_test(type: Exec) {
+    commandLine "cargo.exe", "test"
+    workingDir "dep/libflo_module"
+}
+
+// libflo_std
+task libflo_std_build(type: Exec) {
+    commandLine "cargo.exe", "build"
+    workingDir "dep/libflo_std"
+}
+
+// project
+task full_build(dependsOn: [
+    libflo_build,
+    libflo_action_build,
+    libflo_action_lmod_build,
+    libflo_action_std_build,
+    libflo_cmdline_host_build,
+    libflo_error_build,
+    libflo_event_build,
+    libflo_func_build,
+    libflo_lmod_build,
+    libflo_module_build,
+    libflo_std_build
+])
+
+task test(dependsOn: [
+    libflo_action_lmod_test,
+    libflo_cmdline_host_test,
+    libflo_module_test
+])
+
+task build(dependsOn: [
+    libflo_action_lmod_build,
+    libflo_cmdline_host_build,
+    libflo_lmod_build
+])

@@ -1,0 +1,6 @@
+{
+    "lib": {
+        "platforms": [{ "os": "windows", "path": "libflo_func_test_0.dll" }],
+        "functions": [{ "symbol": "hello_world" }]
+    }
+}

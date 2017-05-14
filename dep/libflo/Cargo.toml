@@ -1,0 +1,31 @@
+[dependencies.error-chain]
+version = "0.10"
+default-features = false
+
+[dependencies.libflo_error]
+path = "../libflo_error"
+version = "0.1"
+
+[dependencies.libflo_event]
+path = "../libflo_event"
+version = "0.1"
+
+[dependencies.libflo_func]
+path = "../libflo_func"
+version = "0.1"
+
+[dependencies.libflo_module]
+path = "../libflo_module"
+version = "0.1"
+
+[package]
+authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
+description = "Provides all of the components of libflo."
+exclude = [
+    ".gitignore",
+    "README",
+    "test/**"
+]
+license = "MIT"
+name = "libflo"
+version = "0.1.2"

@@ -1,0 +1,12 @@
+{
+    "handlers": [
+        {
+            "event": { "module": "libflo", "name": "construct" },
+            "function": { "module": "libflo_action", "name": "construct" }
+        },
+        {
+            "event": { "module": "libflo", "name": "receive" },
+            "function": { "module": "libflo_action", "name": "receive" }
+        }
+    ]
+}

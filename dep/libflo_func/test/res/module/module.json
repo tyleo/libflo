@@ -1,0 +1,14 @@
+{
+    "dependencies": [
+        {
+            "file": {
+                "path": "libflo"
+            }
+        },
+        {
+            "file": {
+                "path": "libflo_func_test_0"
+            }
+        }
+    ]
+}

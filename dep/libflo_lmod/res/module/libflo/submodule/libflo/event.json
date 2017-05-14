@@ -1,0 +1,10 @@
+{
+    "events": [
+        { "name": "construct", "input": "any" },
+        { "name": "err", "input": "string" },
+        { "name": "post_construct" },
+        { "name": "quit" },
+        { "name": "receive", "input": "string" },
+        { "name": "send", "input": "string" }
+    ]
+}
